@@ -31,6 +31,7 @@ float digit1 = 0, digit2 = 0;
 
 int main(void)
 {
+	DDRB = (1<<PORTB0);
     UBRR0H = (BRC>>8);
     UBRR0L = BRC;
     UCSR0B = (1<<TXEN0) | (1<<RXEN0) | (1<<RXCIE0);
@@ -45,9 +46,11 @@ int main(void)
 	//writeSerial("Inicia la calculadora",'T');
     while (1) 
     {
-	
+		//_delay_ms(30);
+		//writeSerial(sendData,'T');
 		//writeSerial(buffer,'T');
 		if (work == '1'){
+			PORTB = 0x01;
 			//writeSerial("Entro a operacion",'T');
 			char separador[] = " ";
 			strcpy(bufferAux,buffer);
@@ -104,10 +107,11 @@ void writeSerial(char *str,char next){
 }
 
 ISR(USART_RX_vect){
-	
+	PORTB = 0x01;
 	buffer[pos] = UDR0;
 	
 	if(buffer[pos]=='D'){
+			PORTB = 0x00;
 			//writeSerial("Detecto la D",'T');
 			//writeSerial(buffer,'T');
 			buffer[pos]= ' ';
