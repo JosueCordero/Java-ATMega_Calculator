@@ -31,6 +31,7 @@ float digit1 = 0, digit2 = 0;
 
 int main(void)
 {
+
 	//Configuration comunicacion RXTX
     UBRR0H = (BRC>>8);
     UBRR0L = BRC;
@@ -45,9 +46,8 @@ int main(void)
 	sei();
     while (1) 
     {
-	
+		_delay_ms(30);
 		if (work == '1'){
-		
 			char separador[] = " ";
 			strcpy(bufferAux,buffer);
 			char *token = strtok(bufferAux,separador);
@@ -73,7 +73,7 @@ int main(void)
 					digit1 /= digit2; 
 				}
 				
-				sprintf(sendData,"Res: %0.2f",digit1);
+				sprintf(sendData,"%f",digit1);
 				writeSerial(sendData,'T');
 				
 				
@@ -105,13 +105,13 @@ void writeSerial(char *str,char next){
 }
 
 ISR(USART_RX_vect){
-	
+
 	buffer[pos] = UDR0;
 	
 	if(buffer[pos]=='D'){
 			buffer[pos]= ' ';
-			work = '0';
-				
+			work = '1';
+			
 	}
 	else{
 		pos++;
