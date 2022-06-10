@@ -82,65 +82,79 @@ public class Calculadora_v_commSerial extends JFrame implements ActionListener {
     }
     public void operations(int ban){
         
-        
-        if(ban==1){
-            if(aux==1) {
-                n1 = text1.getText();
-            text1.setText(Double.toString(n1));
-        }
-        if(wait==0){
-            if((aux==2&&r==0)){
-                n2 = text1.getText();
-                
-                n1+=n2;
+        try{
+            if(ban==1){
+                if(aux==1) {
+                    n1 = text1.getText();
                 text1.setText(n1);
-            }}
-        } 
-        if(ban==2){
-            if(aux==1) {
-                n1 = text1.getText();
-            text1.setText(n1);
-        }
-        if(wait==0){
-            if((aux==2&&r==0)){
-                n2 = text1.getText();
-                n1-=n2;
+            }
+            if(wait==0){
+                if((aux==2&&r==0)){
+                    n2 = text1.getText();
+                    dataSend = n1 + " " + n2 + " 1D";
+                    serial.sendString(dataSend);
+                    n1 = serial.reciveString();
+                    n1 = n1.trim();
+                    text1.setText(n1);
+                }}
+            } 
+            if(ban==2){
+                if(aux==1) {
+                    n1 = text1.getText();
                 text1.setText(n1);
-            }}
-        } 
-        if(ban==3) {
-            if(aux==1) {
-                n1 = text1.getText();
-            text1.setText(n1);
-        }
-        if(wait==0){
-            if((aux==2&&r==0)){
-                n2 = text1.getText();
-                n1*=n2;
+            }
+            if(wait==0){
+                if((aux==2&&r==0)){
+                    n2 = text1.getText();
+                    dataSend = n1 + " " + n2 + " 2D";
+                    serial.sendString(dataSend);
+                    n1 = serial.reciveString();
+                    n1 = n1.trim();
+                    text1.setText(n1);
+                }}
+            } 
+            if(ban==3) {
+                if(aux==1) {
+                    n1 = text1.getText();
                 text1.setText(n1);
-            }}
-        } 
-        if(ban==4){
-            if(aux==1) {
-                n1 = text1.getText();
-            text1.setText(n1);
-        }
-        if(wait==0){
-            if((aux==2&&r==0)){
-                n2 = text1.getText();
-                n1/=n2;
+            }
+            if(wait==0){
+                if((aux==2&&r==0)){
+                    n2 = text1.getText();
+                    dataSend = n1 + " " + n2 + " 3D";
+                    serial.sendString(dataSend);
+                    n1 = serial.reciveString();
+                    n1 = n1.trim();
+                    text1.setText(n1);
+                }}
+            } 
+            if(ban==4){
+                if(aux==1) {
+                    n1 = text1.getText();
                 text1.setText(n1);
-            }}
-        } 
-        
-        aux=2; 
-        cban = 1;
-        ban2 = true;
-        r=0;
-        
+            }
+            if(wait==0){
+                if((aux==2&&r==0)){
+                    n2 = text1.getText();
+                    dataSend = n1 + " " + n2 + " 4D";
+                    serial.sendString(dataSend);
+                    n1 = serial.reciveString();
+                    n1 = n1.trim();
+                    text1.setText(n1);
+                }}
+            } 
+
+            aux=2; 
+            cban = 1;
+            ban2 = true;
+            r=0;
+        }
+        catch (InterruptedException | IOException error){
+            System.out.println(error);
+        }
     }
     
-    
+
     public void actionPerformed(ActionEvent accion){   
         
         try{

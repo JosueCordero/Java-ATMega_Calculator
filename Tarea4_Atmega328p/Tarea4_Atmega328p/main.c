@@ -31,7 +31,7 @@ float digit1 = 0, digit2 = 0;
 
 int main(void)
 {
-
+	DDRB = (1<<PORTB0);
 
 	//Configuration comunicacion RXTX
 
@@ -51,7 +51,6 @@ int main(void)
 
 		_delay_ms(30);
 		if (work == '1'){
-			
 			char separador[] = " ";
 			strcpy(bufferAux,buffer);
 			char *token = strtok(bufferAux,separador);
@@ -109,11 +108,12 @@ void writeSerial(char *str,char next){
 }
 
 ISR(USART_RX_vect){
-
+	PORTB = 0x01;
 
 	buffer[pos] = UDR0;
 	
 	if(buffer[pos]=='D'){
+			PORTB = 0x00;
 			buffer[pos]= ' ';
 			work = '1';
 			
