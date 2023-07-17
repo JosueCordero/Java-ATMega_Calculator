@@ -4,6 +4,7 @@
   <img src="https://img.shields.io/badge/Frontend-Java-orange"/> 
   <img src="https://img.shields.io/badge/Backend-C%20(Atmel%20Studio)-blue" />
   <img src="https://img.shields.io/badge/Microcontroller-Atmega328p-53e9dc" />
+  <img src="https://img.shields.io/github/repo-size/JosueCordero/Java-ATMega_Calculator.svg" />
 </p>
 
 ## Project Description
