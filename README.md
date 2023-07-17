@@ -21,7 +21,7 @@ Explaining code and demonstration video (In Spanish):
   </a>  
 </p>
 
-The exact moment of the demostration is at ![14:03](https://youtu.be/SWOTswg0R6U?t=843)
+The exact moment of the demostration is at [14:03](https://youtu.be/SWOTswg0R6U?t=843)
 
 ---
 
